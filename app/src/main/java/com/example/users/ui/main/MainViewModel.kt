@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    val users: LiveData<List<User>> = UserLocalRepository.getUsers()
+    val usersLiveData: LiveData<List<User>> = UserLocalRepository.getUsers()
 
     fun insertUser(user: User){
         viewModelScope.launch {

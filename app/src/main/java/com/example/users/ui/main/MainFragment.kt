@@ -21,7 +21,7 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.users.observe(viewLifecycleOwner, { users ->
+        viewModel.usersLiveData.observe(viewLifecycleOwner, { users ->
             users.forEach { Log.d("TEST_LOG", it.toString()) }
         })
 
