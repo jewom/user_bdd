@@ -8,7 +8,11 @@ import com.example.users.models.User
 
 const val DATABASE_NAME = "MY_DATABASE"
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
+@Database(
+    entities = [User::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -26,3 +30,4 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
 }
+

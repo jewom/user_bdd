@@ -1,5 +1,6 @@
 package com.example.users.models
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,3 +10,4 @@ data class User(
     val name: String,
     val age: Int,
 )
+

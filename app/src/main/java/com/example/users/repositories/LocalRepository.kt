@@ -10,3 +10,6 @@ object UserLocalRepository {
     suspend fun insertUser(user: User) = AppDatabase.instance.userDao().insertUser(user)
 
 }
+
+
+

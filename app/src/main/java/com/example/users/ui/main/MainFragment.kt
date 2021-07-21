@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.users.R
+import com.example.users.databinding.FragmentMainBinding
 import com.example.users.models.User
 
 class MainFragment : Fragment() {
@@ -21,16 +23,24 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.usersLiveData.observe(viewLifecycleOwner, { users ->
-            users.forEach { Log.d("TEST_LOG", it.toString()) }
+        val binding: FragmentMainBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_main, container, false
+        )
+
+        // on observe les utilisateurs stockés en base
+        viewModel.usersLiveData.observe(viewLifecycleOwner, {
+            // TODO : afficher ou actualiser une liste des utilisateurs
         })
 
+        // On ajoute 10 utilisateurs random
         repeat(10) {
             val user = User(name = "UserRandom" + (1..1000).random(), age = (1..99).random())
             viewModel.insertUser(user)
         }
 
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return binding.root
     }
+
+
 
 }
